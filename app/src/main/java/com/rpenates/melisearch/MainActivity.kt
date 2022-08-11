@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         call.enqueue(object : Callback<MlaResponse?> {
             override fun onResponse(call: Call<MlaResponse?>?, response: Response<MlaResponse?>) {
                 Log.i(TAG, "Response code => " + response.code())
+                Log.i (TAG, "Current items => ${response.body()!!.results!!.size}")
             }
 
             override fun onFailure(call: Call<MlaResponse?>, t: Throwable?) {
