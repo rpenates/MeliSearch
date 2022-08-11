@@ -1,4 +1,23 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext {
+        glide_version = '4.13.2'
+        gson_version = '2.9.1'
+        retrofit_version = '2.9.0'
+        kotlin_version = '1.7.20-Beta'
+        logger_version = '4.2.1'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
 plugins {
     id 'com.android.application' version '7.2.2' apply false
     id 'com.android.library' version '7.2.2' apply false
