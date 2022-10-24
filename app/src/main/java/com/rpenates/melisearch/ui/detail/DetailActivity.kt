@@ -44,8 +44,11 @@ class DetailActivity : AppCompatActivity() {
         conditionText.text = data.condition
         quantityText.text = "${data.availableQuantity} Unidades"
 
+        // Se usa esta url en vez de la contenida en data.thumbnail debido a que no carga por restricciones del api
+        val imagePlaceholder = "https://picsum.photos/200"
+
         Glide.with(this)
-            .load(data.thumbnail)
+            .load(imagePlaceholder)
             .into(thumbnail)
     }
 }
