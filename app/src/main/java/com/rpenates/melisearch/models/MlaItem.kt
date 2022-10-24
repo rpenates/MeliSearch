@@ -1,11 +1,9 @@
 package com.rpenates.melisearch.models
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
+import java.io.Serializable
 
-@Parcelize
-class MlaItem : Parcelable {
+class MlaItem : Serializable {
 
     @SerializedName("id")
     val id: String? = null
