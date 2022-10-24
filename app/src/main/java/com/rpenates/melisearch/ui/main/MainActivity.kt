@@ -12,6 +12,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.rpenates.melisearch.R
 import com.rpenates.melisearch.models.MlaItem
 import com.rpenates.melisearch.models.MlaResponse
@@ -19,6 +20,7 @@ import com.rpenates.melisearch.network.ApiClient.getClient
 import com.rpenates.melisearch.network.mla.MlaApiInterface
 import com.rpenates.melisearch.ui.adapters.ResultItemAdapter
 import com.rpenates.melisearch.ui.detail.DetailActivity
+import com.rpenates.melisearch.utils.DataUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -55,6 +57,12 @@ class MainActivity : AppCompatActivity() {
             listAdapter.notifyDataSetChanged()
         }
 
+        viewModel.hasError.observe(this) {
+            if (it.isNotEmpty()) {
+                Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+            }
+        }
+
         searchBtn.setOnClickListener{
             val urlText = searchInput.text.toString()
             performSearch(urlText)
@@ -63,7 +71,10 @@ class MainActivity : AppCompatActivity() {
 
         listAdapter.onItemClick = {
             val detailIntent = Intent(this, DetailActivity::class.java)
-            detailIntent.putExtra("MlaItem", it)
+
+            val mlaString = DataUtils.mlaSerialize(it)
+
+            detailIntent.putExtra("mlaitem", mlaString)
             startActivity(detailIntent)
         }
     }
