@@ -1,4 +1,4 @@
-package com.rpenates.melisearch.network
+package com.rpenates.melisearch.network.mla
 
 import com.rpenates.melisearch.models.MlaResponse
 import retrofit2.Call

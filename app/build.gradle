@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
 }
 
 def currentDate = new Date()
@@ -23,7 +24,7 @@ android {
         applicationId "com.rpenates.melisearch"
         minSdk 21
         targetSdk 32
-        versionCode 1
+        versionCode = currentDate.time / 1000
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -74,6 +75,9 @@ dependencies {
 
     // Retrofit Logger
     implementation "com.squareup.okhttp3:logging-interceptor:$logger_version"
+
+    // ViewModels
+    implementation 'androidx.fragment:fragment-ktx:1.5.3'
 
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

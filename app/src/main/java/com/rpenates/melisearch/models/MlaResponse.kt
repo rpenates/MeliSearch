@@ -14,7 +14,7 @@ class MlaResponse {
     val paging: MlaPaging? = null
 
     @SerializedName("results")
-    val results : Array<MlaItem?>? = null
+    val results : List<MlaItem>? = null
 
 
 
